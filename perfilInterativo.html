@@ -30,52 +30,60 @@
 </div>
 
 <script>
+    // Função para alterar o nome
     function alterarNome(){
-        const novoNome = prompt("Digite o novo nome:");
-        if(novoNome){
-            document.getElementById("profileName").textContent = "Nome: " + novoNome;
+        const novoNome = prompt("Digite o novo nome:"); // Solicita ao usuário um novo nome
+        if(novoNome){ // Verifica se o usuário forneceu um nome
+            document.getElementById("profileName").textContent = "Nome: " + novoNome; // Atualiza o nome na página
         }
     }
 
+    // Função para adicionar um novo hobby à lista
     function adicionarHobby(){
-        const novoHobby = prompt("Digite um novo hobby:");
-        if(novoHobby){
-            const li = document.createElement("li");
-            li.textContent = novoHobby;
-            li.className = "list-group-item";
-            const btnRemover = document.createElement("button");
-            btnRemover.textContent = "Remover";
-            btnRemover.className = "btn btn-danger btn-sm float-end";
-            btnRemover.onclick = function() { removerHobby(btnRemover); };
-            li.appendChild(btnRemover);
-            document.getElementById("hobbiesList").appendChild(li);
+        const novoHobby = prompt("Digite um novo hobby:"); // Solicita ao usuário um novo hobby
+        if(novoHobby){ // Verifica se o usuário forneceu um hobby
+            const li = document.createElement("li"); // Cria um novo item de lista (li)
+            li.textContent = novoHobby; // Define o texto do item com o hobby inserido
+            li.className = "list-group-item"; // Adiciona a classe de estilo para o item da lista
+
+            const btnRemover = document.createElement("button"); // Cria o botão de remover
+            btnRemover.textContent = "Remover"; // Define o texto do botão
+            btnRemover.className = "btn btn-danger btn-sm float-end"; // Adiciona classes de estilo ao botão
+            btnRemover.onclick = function() { removerHobby(btnRemover); }; // Define a ação do botão (remover hobby)
+
+            li.appendChild(btnRemover); // Adiciona o botão dentro do item de lista
+            document.getElementById("hobbiesList").appendChild(li); // Adiciona o novo item de lista à lista existente
         }
     }
 
+    // Função para remover um hobby da lista
     function removerHobby(botao){
-        const li = botao.parentNode;
-        li.parentNode.removeChild(li);
+        const li = botao.parentNode; // Obtém o item de lista (li) que contém o botão
+        li.parentNode.removeChild(li); // Remove o item de lista da página
     }
 
+    // Função para mudar a cor de fundo do card
     function mudarCorDeFundo(){
-        const cores = ["#f8d7da", "#d1ecf1", "#d4edda", "#fff3cd", "#cae5ff"];
-        const corAleatoria = cores[Math.floor(Math.random() * cores.length)];
-        document.getElementById("profileCard").style.backgroundColor = corAleatoria;
+        const cores = ["#f8d7da", "#d1ecf1", "#d4edda", "#fff3cd", "#cae5ff"]; // Define um array de cores
+        const corAleatoria = cores[Math.floor(Math.random() * cores.length)]; // Escolhe uma cor aleatória do array
+        document.getElementById("profileCard").style.backgroundColor = corAleatoria; // Aplica a cor ao card
     }
 
+    // Função para mudar a foto de perfil
     function mudarFotoDePerfil(){
-        const novaImagem = prompt("Digite a URL da nova foto de perfil:");
-        if(novaImagem){
-            document.getElementById("profileImagem").src = novaImagem; // Atualiza a imagem
+        const novaImagem = prompt("Digite a URL da nova foto de perfil:"); // Solicita ao usuário a URL de uma nova imagem
+        if(novaImagem){ // Verifica se o usuário forneceu uma URL
+            document.getElementById("profileImagem").src = novaImagem; // Atualiza o src da imagem de perfil
         }
     }
 
+    // Função para mudar a idade
     function mudarIdade(){
-        const novaIdade = prompt("Digite a nova idade:");
-        if(novaIdade && !isNaN(novaIdade)){
-            document.getElementById("profileAge").textContent = "Idade: " + novaIdade;
+        const novaIdade = prompt("Digite a nova idade:"); // Solicita ao usuário uma nova idade
+        if(novaIdade && !isNaN(novaIdade)){ // Verifica se a idade é válida (um número)
+            document.getElementById("profileAge").textContent = "Idade: " + novaIdade; // Atualiza a idade na página
         } else {
-            alert("Por favor, insira uma idade válida.");
+            alert("Por favor, insira uma idade válida."); // Exibe um alerta se a idade não for válida
         }
     }
 </script>
